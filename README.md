@@ -8,7 +8,7 @@
 
 # What's new in 0.0.3?
 - webpanel enabled
-- mode: test & bog fixed
+- mode: test & bug fixed
 
 
 ---

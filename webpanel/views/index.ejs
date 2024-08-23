@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Görünümü</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- CSS dosyanızı buraya ekleyin -->
+</head>
+<body>
+    <nav>
+        <h1>DataBase Yönetim Paneli</h1>
+        <div class="bot-avatar"><%= owner %></div>
+    </nav>
+    <main>
+        <!-- İkonlar JSON kutusunun dışında, sağ üst köşede yerleştirildi -->
+        <div class="copy-icon" data-tooltip="Kopyala!">📋</div>
+        <div class="download-icon" data-tooltip="İndir!">📦</div>
+        <div class="save-icon" id="saveButton" data-tooltip="Kaydet!">💾</div> <!-- Unique ID for the save icon -->
+
+        <div class="container">
+            <!-- JSON içeriği buraya gelecek -->
+            <pre><textarea id="jsonData"><%= data %></textarea></pre>
+        </div>
+    </main>
+
+    <!-- Add JavaScript to handle the button click -->
+    <script src="js/script.js"></script>
+</body>
+</html>

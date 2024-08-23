@@ -1,0 +1,25 @@
+{
+  "name": "lweaxodb",
+  "version": "0.0.3",
+  "description": "İşinize Yarıcak Database Modülü",
+  "main": "./file/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LWEAXO/lweaxodb.git"
+  },
+  "keywords": [
+    "lweaxo",
+    "lweaxodb",
+    "lweaxo-db",
+    "db"
+  ],
+  "author": "LWEAXO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LWEAXO/lweaxodb/issues"
+  },
+  "homepage": "https://github.com/LWEAXO/lweaxodb#readme"
+}

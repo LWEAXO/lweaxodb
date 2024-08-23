@@ -1,0 +1,8 @@
+{
+    "errors": {
+        "blankName": "[LweaxoDB] Please give me a database name. Are you having errors? Join my Discord server and ask anything. https://discord.gg/X7F9swzFR6",
+        "blankData": "[LweaxoDB] Please give me a data. (not 0.) Are you having errors? Join my Discord server and ask anything. https://discord.gg/X7F9swzFR6",
+        "blankNumber": "[LweaxoDB] Please give me a number. Are you having errors? Join my Discord server and ask anything. https://discord.gg/X7F9swzFR6",
+        "oldVersion": "[LweaxoDB] It seems like you are using an outdated version of LweaxoDB. Use 'npm update lweaxodb' to update module. Join my Discord server: https://discord.gg/X7F9swzFR6"
+    }
+}

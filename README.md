@@ -6,9 +6,10 @@
 ![NPM Downloads by package author](https://img.shields.io/npm-stat/dy/LWEAXO?plastic&logo=npm&label=%C4%B0ndirme)
 </div>
 
-# What's new in 0.0.3?
-- webpanel enabled
-- mode: test & bug fixed
+# What's new in 0.0.4?
+- Features have been added to the web panel!
+- Bugs and issues have been fixed!
+- Database Stats feature has been added!
 
 
 ---
@@ -128,6 +129,18 @@ db.deleteAll() // true
 ```js
 const db = require("lweaxodb")
 db.setWebPanel(true, 3000) // true/false, //port
+//localhost:{port}/lweaxo
+//localhost:{port}/404
+//localhost:{port}/
+```
+
+> DB Stats
+
+```js
+const db = require("lweaxodb")
+
+console.log(db.size) // DB Size | DB Boyutu
+console.log(db.version) // DB version | DB sürümü
 ```
 
 If you've any question, you can join to my Discord server: [Click me!](https://discord.gg/X7F9swzFR6)

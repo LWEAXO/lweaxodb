@@ -1,6 +1,6 @@
 {
   "name": "lweaxodb",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "İşinize Yarıcak Database Modülü",
   "main": "./file/index.js",
   "scripts": {
@@ -21,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/LWEAXO/lweaxodb/issues"
   },
-  "homepage": "https://github.com/LWEAXO/lweaxodb#readme"
+  "homepage": "https://github.com/LWEAXO/lweaxodb#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  }
 }

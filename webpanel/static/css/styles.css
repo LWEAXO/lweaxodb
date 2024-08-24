@@ -35,7 +35,7 @@ nav h1 {
 
 nav .bot-avatar {
     color: #f47b13; /* Warning rengi */
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
 }
 
@@ -65,7 +65,7 @@ main {
     overflow-y: auto; /* Yatay kaydırmayı kaldır, dikey kaydırmayı etkinleştir */
     overflow-x: hidden;
     height: auto; /* Yükseklik otomatik ayarlanacak */
-    max-height: 70vh; /* Maksimum yüksekliği ayarlayın, ekranın %70'i */
+    max-height: 710vh; /* Maksimum yüksekliği ayarlayın, ekranın %70'i */
 }
 
 /* JSON İçeriği */
@@ -79,7 +79,7 @@ pre {
 /* JSON Düzenleyici */
 textarea {
     width: 100%;
-    height: 300px; /* Yükseklik ayarı */
+    height: 500px; /* Yükseklik ayarı */
     background-color: #23272a; /* Arka plan rengi */
     color: #ffffff; /* Metin rengi */
     border: 1px solid #23272a; /* Çerçeve rengi */
@@ -153,4 +153,71 @@ textarea {
 
 .save-icon::after {
     content: 'Kaydet!';
+}
+
+.bot-avatar-link {
+    text-decoration: none; /* Altını çizgiyi kaldırır */
+    color: inherit; /* Renklerin değiştirilmesini engeller */
+    display: inline-block; /* Div'i tamamen kapsamasını sağlar */
+}
+
+.bot-avatar-link:hover {
+    cursor: pointer; /* Üzerine gelindiğinde imleci değiştirir */
+}
+
+.discord-icon {
+    text-align: center;
+    position: absolute;
+    width: 130px;
+    top: 60px; /* Kutunun üstünden daha fazla yukarıda */
+    right: 190px; /* Kutunun sağ tarafından biraz daha uzak */
+    display: flex;
+    justify-content: center; /* İçeriği yatayda ortalar */
+    text-decoration: none; /* Alt çizgi olmaması için */
+    align-items: center; /* İçeriği dikeyde ortalar */
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px;
+    background-color: #1545f1; /* Discord'un mavi rengi */
+    border-radius: 4px;
+    color: white;
+    z-index: 1100; /* İkonların üstte görünmesini sağlamak için yüksek z-index */
+}
+
+.discord-icon {
+    right: 30px;
+    top: 690px;
+}
+
+/* Hover Efektleri */
+.discord-icon:hover {
+    background-color: #1c3ba3;
+}
+
+.discord-icon::after {
+    content: attr(data-tooltip);
+    visibility: hidden;
+    opacity: 0;
+    width: 60px;
+    background-color: #23272a;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    top: -35px;
+    left: 50%; /* Tooltip'i kutunun ortasına hizalamak için */
+    transform: translateX(-50%); /* Tooltip'i tam ortalamak için */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Tooltip İçeriği görünür olduğunda */
+.discord-icon:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tooltip İçeriği */
+.discord-icon::after {
+    content: 'Discord!';
 }

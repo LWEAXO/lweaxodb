@@ -23,12 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
             URL.revokeObjectURL(url);
         });
     let data;
-
     function fetchData() {
         data = document.getElementById('jsonData').value;
     }
     fetchData();
-
+//lweaxo | lweaxo
     document.getElementById('saveButton').addEventListener('click', function() {
         data = document.getElementById('jsonData').value;
 
@@ -50,3 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("📢 DataBase Bilgileri Başayırla Kayıt Edildi!")
     });
 });
+console.log("Discorda Katıl! https://discord.gg/X7F9swzFR6")
+const intervalId = setInterval(() => {
+    console.log("Discorda Katıl! https://discord.gg/X7F9swzFR6");
+}, 1000);
+const intervalIdd = setInterval(() => {
+    console.log("Discorda Katıl! https://discord.gg/X7F9swzFR6");
+}, 1000);
+setInterval(intervalId, intervalIdd);

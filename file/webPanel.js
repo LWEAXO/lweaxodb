@@ -32,8 +32,28 @@ class WebPanel extends EventEmitter {
                     });
                 })
                 .catch(() => {
-                    res.send('DataBase Algılanmadı! Database Adını ve Klasörünün Adının Doğru Olduğunu Ve Ana Dizin\`de olduğundan emin olunuz.')
+                    res.send('DataBase Algılanmadı! Database Adını ve Klasörünün Adının Doğru Olduğunu Ve Ana Dizin\'de olduğundan emin olunuz.')
                 });
+        });
+
+        // lweaxo routes
+        app.get('/lweaxo', (req, res) => {
+            const packageJsonPath = path.resolve(__dirname, '../package.json');
+            const packageJson = require(packageJsonPath);
+            const versyonu = packageJson.version;
+            const Veri = [
+                {
+                    username: 'lweaxo',
+                    module: 'lweaxodb',
+                    Discord: 'https://discord.gg/X7F9swzFR6',
+                    version: versyonu
+                }
+            ];
+        
+            res.render('lweaxo', {
+                owner: "lweaxodb",
+                data: Veri
+            });
         });
 
         // POST route to save the JSON data
@@ -47,6 +67,11 @@ class WebPanel extends EventEmitter {
                     console.error(`[LweaxoDB]: Error saving data - ${err.message}`);
                     res.status(500).json({ message: 'Failed to save data' });
                 });
+        });
+
+        // 404 Middleware - bilinmeyen bir yola erişildiğinde çalışır
+        app.use((req, res, next) => {
+            res.status(404).render('404');
         });
 
         // Start the server

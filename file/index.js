@@ -1,6 +1,51 @@
+const fs = require('fs');
+const path = require('path');
+
 const langs = ["tr", "en"];
 
+// Sürüm bilgisi alma fonksiyonu
+function getVersion() {
+  try {
+    const packageJsonPath = path.resolve(__dirname, '../package.json');
+    const packageJson = require(packageJsonPath);
+    return packageJson.version;
+  } catch (error) {
+    console.error(`Error reading version: ${error.message}`);
+    return undefined;
+  }
+}
+
+// Boyut bilgisi alma fonksiyonu
+function getSize() {
+  try {
+    const filePath = path.resolve(__dirname, '../../../lweaxodb/lweaxodb.json');
+    const stats = fs.statSync(filePath);
+    const fileSize = stats.size;
+
+    if (fileSize < 1024) {
+      return `${fileSize} Bytes`;
+    } else if (fileSize < 1024 * 1024) {
+      return `${(fileSize / 1024).toFixed(2)} KB`;
+    } else if (fileSize < 1024 * 1024 * 1024) {
+      return `${(fileSize / (1024 * 1024)).toFixed(2)} MB`;
+    } else {
+      return `${(fileSize / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+    }
+  } catch (error) {
+    console.error(`Error getting file size: ${error.message}`);
+    return undefined;
+  }
+}
+
 module.exports = {
+  get version() {
+    return getVersion();
+  },
+
+  get size() {
+    return getSize();
+  },
+
   setOptions() {
     var adapter = this.adapter || require("../adapters/jsondb");
     if(this.mongoOptions?.schema) {
@@ -9,15 +54,15 @@ module.exports = {
       this.isMongoSpecialSchema = false;
     }
     this.options = {
-    	dbName: this.file || "lweaxodb",
+      dbName: this.file || "lweaxodb",
       webPanel: {
         isActive: this.webPanel,
         port: this.webPort
       },
-    	dbFolder: this.folder || "lweaxodb",
-    	noBlankData: this.noBlankData || false,
-    	readable: this.readable || false,
-    	language: this.lang ? this.lang : "tr",
+      dbFolder: this.folder || "lweaxodb",
+      noBlankData: this.noBlankData || false,
+      readable: this.readable || false,
+      language: this.lang ? this.lang : "tr",
       isMongo: this.mongo,
       mongoOptions: this.mongoOptions || {seperator: this.seperator || "."},
       isMongoSpecialSchema: this.isMongoSpecialSchema,
@@ -300,45 +345,70 @@ module.exports = {
     }
 
     if(!number) {
-      throw new TypeError(this.message["errors"]["blankData"]);
-    }
-
-    if(isNaN(number)) {
       throw new TypeError(this.message["errors"]["blankNumber"]);
     }
 
-    return this.adapter.delByPriority(db, number);
+    return this.adapter.setByPriority(db, data, number);
 
   },
 
   all() {
     this.setOptions();
-  	return this.adapter.all();
+    try {
+      return this.adapter.all();
+    } catch (err) {
+      return undefined;
+    }
 
   },
 
   deleteAll() {
     this.setOptions();
-  	return this.adapter.deleteAll();
+    try {
+      return this.adapter.deleteAll();
+    } catch (err) {
+      return false;
+    }
 
   },
 
   move(quickDB) {
-    console.log("[LweaxoDB]: QuickDB to LweaxoDB: Started copying database.")
-    quickDB.fetchAll().map((data) => {
-      this.adapter.set(data.ID, data.data)
-      console.log(`[LweaxoDB]: QuickDB to LweaxoDB: Copied ${data.ID}`)
-    })
-    return true;
+    this.setOptions();
+    if(!quickDB) throw new TypeError(this.message["errors"]["quickdbUndefined"]);
+
+    if(!quickDB.all()) throw new TypeError(this.message["errors"]["quickdbEmpty"]);
+
+    if(this.mongo) throw new TypeError(this.message["errors"]["quickdbToMongo"]);
+
+    try {
+      var datas = quickDB.all();
+      for (let i = 0; i < datas.length; i++) {
+        this.set(datas[i].ID, datas[i].data);
+      }
+
+      return true;
+    } catch (err) {
+      throw new TypeError(this.message["errors"]["quickdbToLweaxodb"]);
+    }
   },
 
-  async moveToMongo(JsonDB) {
-    console.log("[LweaxoDB]: JsonDB to LweaxoDB Mongo Adapter: Started copying database.")
-    Object.keys(JsonDB).map(async(data) => {
-      await this.adapter.set(data, JsonDB[data])
-      console.log(`[LweaxoDB]: JsonDB to LweaxoDB Mongo Adapter: Copied ${data}`)
-    })
-    return true;
-  }
+  moveToMongo(JsonDB) {
+    this.setOptions();
+    if(!JsonDB) throw new TypeError(this.message["errors"]["quickdbUndefined"]);
 
-}
+    if(!JsonDB.all()) throw new TypeError(this.message["errors"]["quickdbEmpty"]);
+
+    if(this.mongo) throw new TypeError(this.message["errors"]["quickdbToMongo"]);
+
+    try {
+      var datas = JsonDB.all();
+      for (let i = 0; i < datas.length; i++) {
+        this.set(datas[i].ID, datas[i].data);
+      }
+
+      return true;
+    } catch (err) {
+      throw new TypeError(this.message["errors"]["quickdbToLweaxodb"]);
+    }
+  }
+};

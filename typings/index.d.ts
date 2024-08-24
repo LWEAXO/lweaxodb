@@ -9,7 +9,8 @@ interface MongoOptions {
 }
 
 declare const LweaxoDB: {
-
+    version: string;
+    size: string;
     setLanguage:(language:"tr"|"en") => true;
     setCheckUpdates:(boolean:boolean) => boolean;
     setReadable:(readable:boolean) => boolean;

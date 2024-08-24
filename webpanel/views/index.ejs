@@ -9,7 +9,9 @@
 <body>
     <nav>
         <h1>DataBase Yönetim Paneli</h1>
-        <div class="bot-avatar"><%= owner %></div>
+        <a href="https://discord.gg/X7F9swzFR6" target="_blank" rel="noopener noreferrer" class="bot-avatar-link">
+            <div class="bot-avatar"><%= owner %></div>
+        </a>               
     </nav>
     <main>
         <!-- İkonlar JSON kutusunun dışında, sağ üst köşede yerleştirildi -->
@@ -21,6 +23,7 @@
             <!-- JSON içeriği buraya gelecek -->
             <pre><textarea id="jsonData"><%= data %></textarea></pre>
         </div>
+        <%- include("discord") %>
     </main>
 
     <!-- Add JavaScript to handle the button click -->

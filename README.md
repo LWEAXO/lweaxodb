@@ -7,14 +7,12 @@
 </div>
 
 # What's new in 0.0.6?
-- The web panel has been removed.
+- The web panel has been removed. (!)
 - NPM bugs have been fixed (2x).
 - Bugs and issues related to Mongoose and NPM have been fixed.
 
 
 ---
-
-## Bir Sorunuz Olursa Veya Beni Desteklemek İçin [Discord](https://discord.gg/X7F9swzFR6) Sunucuma Katılın.
 
 Examples
 
@@ -62,8 +60,6 @@ db.has("x") // true
 db.delete("x") // true
 db.deleteAll() // true
 ```
-
-> MongoDB if you find any bugs join my [Discord](https://discord.gg/X7F9swzFR6))
 
 ```js
 const db = require("lweaxodb")
@@ -132,10 +128,6 @@ const db = require("lweaxodb")
 console.log(db.size) // DB Size | DB Boyutu
 console.log(db.version) // DB version | DB sürümü
 ```
-
-If you've any question, you can join to my Discord server: [Click me!](https://discord.gg/X7F9swzFR6)
-
-Sorunuz Olursa Discord Sunucuma Gelebilirsiniz. [Bana Tıkla!](https://discord.gg/X7F9swzFR6)
 
 ---
 

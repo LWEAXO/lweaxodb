@@ -6,7 +6,7 @@ module.exports.set = function (path, value, obj, seperator) {
         var elem = pList[`${i}`];
         if( typeof schema[`${elem}`] !== "object" ) {
           schema[`${elem}`] = {};
-        }
+        } //github LWEAXO
         schema = schema[`${elem}`];
     }
     schema[pList[`${len-1}`]] = value;

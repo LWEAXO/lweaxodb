@@ -6,10 +6,10 @@
 ![NPM Downloads by package author](https://img.shields.io/npm-stat/dy/LWEAXO?plastic&logo=npm&label=%C4%B0ndirme)
 </div>
 
-# What's new in 0.0.4?
-- Features have been added to the web panel!
-- Bugs and issues have been fixed!
-- Database Stats feature has been added!
+# What's new in 0.0.6?
+- The web panel has been removed.
+- NPM bugs have been fixed (2x).
+- Bugs and issues related to Mongoose and NPM have been fixed.
 
 
 ---
@@ -122,16 +122,6 @@ db.setByPriority("b", {newtest:"hey this is edited"}, 1) // [{newtest:"hey this 
 db.has("x") // true
 db.delete("x") // true
 db.deleteAll() // true
-```
-
-> WebPanel
-
-```js
-const db = require("lweaxodb")
-db.setWebPanel(true, 3000) // true/false, //port
-//localhost:{port}/lweaxo
-//localhost:{port}/404
-//localhost:{port}/
 ```
 
 > DB Stats

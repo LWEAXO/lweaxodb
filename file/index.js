@@ -55,10 +55,10 @@ module.exports = {
     }
     this.options = {
       dbName: this.file || "lweaxodb",
-      webPanel: {
-        isActive: this.webPanel,
-        port: this.webPort
-      },
+//      webPanel: {
+//        isActive: this.webPanel,
+//        port: this.webPort
+//      },
       dbFolder: this.folder || "lweaxodb",
       noBlankData: this.noBlankData || false,
       readable: this.readable || false,
@@ -72,10 +72,10 @@ module.exports = {
     this.message = this.lang ? require(`../language/${this.lang.toLowerCase()}.json`) : require(`../language/tr.json`);
     this.options.mongoOptions.seperator = this.options.seperator
     this.adapter = adapter.set ? adapter : (this.mongo ? new adapter(this.options.mongoOptions) : new adapter(this.options));
-    if(this.webPanel) {
-      var pnl = require("./webPanel");
-      this.panel = new pnl(this.options.webPanel.port, this.adapter)
-    }
+//    if(this.webPanel) {
+//      var pnl = require("./webPanel");
+//      this.panel = new pnl(this.options.webPanel.port, this.adapter)
+//    }
     if(this.checkUpdates) {
       try {
         fetch("https://registry.npmjs.org/lweaxodb/latest").then(async(res) => {
@@ -103,19 +103,19 @@ module.exports = {
     }
   },
 
-  setWebPanel(a, port = 2229) {
-    if(a === true) {
-      this.webPanel = true;
-      this.webPort = port;
-      this.setOptions();
-      return a;
-    } else {
-      this.webPanel = false;
-      this.webPort = port;
-      this.setOptions();
-      return false;
-    }
-  },
+//  setWebPanel(a, port = 2229) {
+//    if(a === true) {
+//      this.webPanel = true;
+//      this.webPort = port;
+//      this.setOptions();
+//      return a;
+//    } else {
+//      this.webPanel = false;
+//      this.webPort = port;
+//      this.setOptions();
+//      return false;
+//    }
+//  },
 
   setSeperator(a) {
     this.seperator = a;
